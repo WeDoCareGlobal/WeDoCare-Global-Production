@@ -1755,10 +1755,21 @@ table {
 <span>№</span><span>System</span><span>Control question</span><span>Status</span><span></span>
 </div>
 
-<article class="card sysrow reveal" data-group="control">
+<article class="card sysrow reveal" data-group="control" data-repo-url="https://github.com/WeDoCareGlobal/OmniGuard-Production">
+<span class="num">00</span>
+<div>
+<h3><a href="https://github.com/WeDoCareGlobal/OmniGuard-Production" rel="noopener noreferrer" target="_blank">OmniGuard</a></h3>
+<span class="layer">Unified security gateway</span>
+</div>
+<p>One deterministic security and governance gateway in front of the six systems, with request inspection and policy enforcement.</p>
+<span class="state is-review">Private production repository</span>
+<a class="go" href="https://github.com/WeDoCareGlobal/OmniGuard-Production" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
+</article>
+
+<article class="card sysrow reveal" data-group="control" data-repo-url="https://github.com/WeDoCareGlobal/AgentGuard-Production">
 <span class="num">01</span>
 <div>
-<h3><a href="agentguard.html">AgentGuard</a></h3>
+<h3><a href="https://github.com/WeDoCareGlobal/AgentGuard-Production">AgentGuard</a></h3>
 <span class="layer">Security</span>
 </div>
 <p>Make agent tool calls subject to explicit policies, limits and inspectable audit records.</p>
@@ -1766,10 +1777,10 @@ table {
 <a class="go" href="https://github.com/WeDoCareGlobal/AgentGuard-Production" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
 </article>
 
-<article class="card sysrow reveal" data-group="control">
+<article class="card sysrow reveal" data-group="control" data-repo-url="https://github.com/WeDoCareGlobal/FoundationCentar-Production">
 <span class="num">02</span>
 <div>
-<h3><a href="foundationcentar.html">FoundationCentar</a></h3>
+<h3><a href="https://github.com/WeDoCareGlobal/FoundationCentar-Production">FoundationCentar</a></h3>
 <span class="layer">Governance</span>
 </div>
 <p>Explore governance-first foundations for operational AI deployment and accountability.</p>
@@ -1777,10 +1788,10 @@ table {
 <a class="go" href="https://github.com/WeDoCareGlobal/FoundationCentar-Production" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
 </article>
 
-<article class="card sysrow reveal" data-group="knowledge">
+<article class="card sysrow reveal" data-group="knowledge" data-repo-url="https://github.com/WeDoCareGlobal/Enterprise-Hybrid-Rag-Production">
 <span class="num">03</span>
 <div>
-<h3><a href="enterprise-hybrid-rag.html">Enterprise Hybrid-RAG</a></h3>
+<h3><a href="https://github.com/WeDoCareGlobal/Enterprise-Hybrid-Rag-Production">Enterprise Hybrid-RAG</a></h3>
 <span class="layer">Retrieval</span>
 </div>
 <p>Connect enterprise knowledge with hybrid lexical and dense retrieval, fused through RRF.</p>
@@ -1788,10 +1799,10 @@ table {
 <a class="go" href="https://github.com/WeDoCareGlobal/Enterprise-Hybrid-Rag-Production" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
 </article>
 
-<article class="card sysrow reveal" data-group="quality">
+<article class="card sysrow reveal" data-group="quality" data-repo-url="https://github.com/WeDoCareGlobal/AgentEval-Production">
 <span class="num">04</span>
 <div>
-<h3><a href="agent-eval.html">Agent Eval</a></h3>
+<h3><a href="https://github.com/WeDoCareGlobal/AgentEval-Production">Agent Eval</a></h3>
 <span class="layer">Evaluation</span>
 </div>
 <p>Make agentic workflows easier to inspect through evidence-driven metrics and execution assessment.</p>
@@ -1799,10 +1810,10 @@ table {
 <a class="go" href="https://github.com/WeDoCareGlobal/AgentEval-Production" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
 </article>
 
-<article class="card sysrow reveal" data-group="control">
+<article class="card sysrow reveal" data-group="control" data-repo-url="https://github.com/WeDoCareGlobal/AgentVault-Production">
 <span class="num">05</span>
 <div>
-<h3><a href="agentvault.html">AgentVault</a></h3>
+<h3><a href="https://github.com/WeDoCareGlobal/AgentVault-Production">AgentVault</a></h3>
 <span class="layer">Assurance</span>
 </div>
 <p>Bring tool registration, secret management and bounded execution into a clearer control layer.</p>
@@ -1810,10 +1821,10 @@ table {
 <a class="go" href="https://github.com/WeDoCareGlobal/AgentVault-Production" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
 </article>
 
-<article class="card sysrow reveal" data-group="knowledge">
+<article class="card sysrow reveal" data-group="knowledge" data-repo-url="https://github.com/WeDoCareGlobal/Pharma-Intelligence-Os-Production">
 <span class="num">06</span>
 <div>
-<h3><a href="pharma-intelligence-os.html">Pharma Intelligence OS</a></h3>
+<h3><a href="https://github.com/WeDoCareGlobal/Pharma-Intelligence-Os-Production">Pharma Intelligence OS</a></h3>
 <span class="layer">Regulatory intelligence</span>
 </div>
 <p>Explore a dedicated workspace for pharmacovigilance and regulatory intelligence workflows.</p>
@@ -2148,6 +2159,15 @@ if (video && motion) {
     else window.addEventListener('load', startWhenIdle, { once: true });
   }
 }
+
+/* Whole project cards open their matching GitHub Production repository.
+   Existing links remain independently usable; clicks on links are not intercepted. */
+document.querySelectorAll('.card[data-repo-url]').forEach(card => {
+  card.addEventListener('click', event => {
+    if (event.target.closest('a, button, input, select, textarea')) return;
+    window.open(card.dataset.repoUrl, '_blank', 'noopener,noreferrer');
+  });
+});
 
 /* System filter */
 const filterGroup = document.querySelector('.filters');
