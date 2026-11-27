@@ -7,7 +7,7 @@
 ## Verified state
 
 - `https://wedocare-global.com/` returned HTTP 200 during this inspection.
-- The supplied candidate preview `https://wedocare-globalcom-next.vercel.app/` returned HTTP 404 with `DEPLOYMENT_NOT_FOUND`. Its visual design could not be inspected, so this preflight does not claim a pixel-accurate implementation of that preview.
+- The supplied candidate preview `https://wedocare-globalcom-next.vercel.app/` returned HTTP 404 with `DEPLOYMENT_NOT_FOUND`. Its visual design could not be inspected, so this PR does not claim a pixel-accurate implementation of that separate preview. A new review-only preview was generated from this PR branch (see the PR's Vercel Preview check).
 - The Vercel project named `we-do-care-global` is currently linked in project context to `WeDoCareGlobal/WeDoCare-Global-Production`.
 - The latest production deployment record for that project reports commit `595ad0610baedb2ee5ffd2765828d1cff64d3d01`, but its deployment metadata identifies source `we-do-care-global/we-do-care-global`. This does not match the currently linked GitHub repository.
 - The project-domain listing returned only `we-do-care-global.vercel.app`; it did not list `wedocare-global.com` or `www.wedocare-global.com`.
@@ -50,7 +50,7 @@ Working branch:
 
 ## Remaining blockers before production
 
-- Restore or provide a working candidate-preview URL so the intended design can be inspected and compared.
+- Provide a working URL or source commit for the originally supplied candidate design so it can be compared against the current PR preview. The PR preview verifies this branch only, not visual equivalence with the unavailable candidate.
 - Reconcile the canonical production source, Vercel Git connection, deployment provenance, and root-versus-`docs/` build path.
 - Attach and verify apex and `www` domains to the intended Vercel project only after a separately approved cutover plan.
 - Run the pull-request workflows and resolve every failing check.
@@ -59,3 +59,11 @@ Working branch:
 ## Safety boundary
 
 This report records inspection evidence and proposed review changes only. No branch was merged. No production deployment, domain mutation, DNS mutation, secret change, or repository deletion was performed.
+
+
+## Pull-request validation evidence
+
+- GitHub Actions `Validate static preview` completed successfully for the synchronized PR head: 18 HTML pages, 390 local references checked, zero validator errors; JavaScript syntax checks passed.
+- GitHub Actions `Website preflight and OmniGuard presence` completed successfully for the synchronized PR head, including the OmniGuard private-source assertions.
+- Vercel generated a separate `preview` deployment for the PR branch and the browser returned HTTP 200 for the homepage and OmniGuard page. The homepage system filters were exercised: Control returned AgentGuard, FoundationCentar and AgentVault; Knowledge returned Enterprise Hybrid-RAG and Pharma Intelligence OS. Agent Eval belongs to Assurance.
+- These checks validate the current PR branch only. They do not reconcile the production-source discrepancy or certify the six system backends.
