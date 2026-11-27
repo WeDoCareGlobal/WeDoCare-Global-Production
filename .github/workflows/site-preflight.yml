@@ -26,7 +26,9 @@ jobs:
           home=Links();home.feed(Path('index.html').read_text())
           assert 'omniguard.html' in home.links, 'Homepage must link to OmniGuard'
           page=Path('omniguard.html').read_text()
-          assert 'WeDoCareGlobal/OmniGuard-Next' in page, 'OmniGuard page must link to repository'
+          assert 'WeDoCareGlobal/OmniGuard-Production' in page, 'OmniGuard page must link to the Production repository'
+          assert 'Production repository (private)' in page, 'OmniGuard source must be disclosed as private'
+          assert 'Request source access' in page, 'OmniGuard page must explain how to request source access'
           assert 'Development preview' in page, 'Do not misrepresent preview as production-ready'
-          print('OmniGuard presence and disclosure verified')
+          print('OmniGuard production source, privacy and preview disclosures verified')
           PY
